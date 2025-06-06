@@ -1,11 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, Text, View, Button, Pressable } from "react-native";
+import { useVoiceRecognition } from "./hooks/useVoiceRecognition";
 
 export default function App() {
   const [borderColor, setBorderColor] = useState<"lightgray" | "lightgreen">(
     "lightgray"
   );
+
+  const { state, startRecognizing, stopRecognizing, destroyRecognizer } =
+    useVoiceRecognition();
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 32, fontWeight: "bold", marginBottom: 30 }}>
