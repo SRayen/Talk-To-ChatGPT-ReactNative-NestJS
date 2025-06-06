@@ -26,13 +26,20 @@ export default function App() {
         Press and hold this button to record your voice.Release the button to
         send the recording, and you'll hear a response.
       </Text>
+      <Text>{JSON.stringify(state, null, 2)}</Text>
       <Text style={{ textAlign: "center", marginVertical: 10, fontSize: 17 }}>
         Your message
       </Text>
 
       <Pressable
-        onPressIn={() => setBorderColor("lightgreen")}
-        onPressOut={() => setBorderColor("lightgray")}
+        onPressIn={() => {
+          startRecognizing();
+          setBorderColor("lightgreen");
+        }}
+        onPressOut={() => {
+          stopRecognizing();
+          setBorderColor("lightgray");
+        }}
         style={{
           width: "90%",
           padding: 30,
